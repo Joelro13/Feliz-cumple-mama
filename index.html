@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Te queremos ❤️</title>
   <style>
+    <audio id="datasets" src="datasets/One%20Day%20lyrics%20by%20Alex%20blue%20_%20Love%20Music.mp3"></audio>
+
+<script>
+  window.onload = () => {
+    const audio = document.getElementById('datasets');
+    audio.play().catch(e => {
+      console.log('No se pudo reproducir el audio automáticamente:', e);
+    });
+  };
+</script>
+
     body {
       background-color: #fbd5ec;
       font-family: 'Segoe UI', sans-serif;
