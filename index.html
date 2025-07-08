@@ -2,37 +2,97 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Te queremos ❤️</title>
   <style>
     body {
-      background-color: #fbd5ec; /* rosa claro */
+      background-color: #fbd5ec;
       font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
+      padding: 30px 10px;
       text-align: center;
       color: #333;
-      padding: 20px;
     }
-    .mensaje {
-      max-width: 500px;
-      font-size: 1.5em;
-      line-height: 1.6;
+
+    h1 {
+      font-size: 1.7em;
+      margin-bottom: 30px;
     }
-    .corazon {
-      font-size: 2em;
-      color: red;
+
+    .foto {
+      max-width: 90vw;
+      margin: 30px auto;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .foto img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .foto p {
+      margin-top: 12px;
+      font-size: 1.1em;
+      padding: 0 5px;
+    }
+
+    .final {
+      margin-top: 40px;
+      font-size: 1.2em;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 1s ease;
     }
   </style>
 </head>
 <body>
-  <div class="mensaje">
-    <p>Porque hay canciones que dicen más que las palabras.</p>
-    <p>Porque hoy no solo celebramos tu cumpleaños...</p>
-    <p><strong>Celebramos tenerte.</strong></p>
-    <p>Te queremos <span class="corazon">❤️</span></p>
+
+  <h1>🎉 ¡Feliz cumpleaños!</h1>
+
+  <div class="foto" id="foto1">
+    <img src="WhatsApp Image 2025-07-08 at 20.22.04.jpeg" alt="Foto 1">
+    <p>Gracias por acompañarnos en nuestras aventuras</p>
   </div>
+
+  <div class="foto" id="foto2">
+    <img src="WhatsApp Image 2025-07-08 at 20.21.20.jpeg" alt="Foto 2">
+    <p>Gracias por hacer feliz a los tuyos</p>
+  </div>
+
+  <div class="foto" id="foto3">
+    <img src="WhatsApp Image 2025-07-08 at 20.20.41.jpeg" alt="Foto 3">
+    <p>Gracias por apoyarnos en todo momento desde siempre</p>
+  </div>
+
+  <div class="foto" id="foto4">
+    <img src="WhatsApp Image 2025-07-08 at 20.19.49.jpeg" alt="Foto 4">
+    <p>En resumen, gracias por ser tú, única y perfecta tal y como eres</p>
+  </div>
+
+  <div class="final" id="mensajeFinal">
+    Una vez abierto esto, ya puedes continuar con tus regalos!!
+  </div>
+
+  <script>
+    const fotos = [
+      document.getElementById('foto1'),
+      document.getElementById('foto2'),
+      document.getElementById('foto3'),
+      document.getElementById('foto4')
+    ];
+
+    fotos.forEach((foto, i) => {
+      setTimeout(() => {
+        foto.style.opacity = '1';
+      }, i * 3000);
+    });
+
+    setTimeout(() => {
+      document.getElementById('mensajeFinal').style.opacity = '1';
+    }, fotos.length * 3000 + 1000);
+  </script>
+
 </body>
 </html>
