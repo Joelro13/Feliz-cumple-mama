@@ -9,21 +9,26 @@
       background-color: #fbd5ec;
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 30px 10px;
+      padding: 0;
       text-align: center;
       color: #333;
+      overflow-x: hidden;
     }
 
     h1 {
       font-size: 1.7em;
-      margin-bottom: 30px;
+      margin: 30px 0;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 1s ease, transform 1s ease;
     }
 
-    .foto {
+    .foto, .final {
       max-width: 90vw;
       margin: 30px auto;
       opacity: 0;
-      transition: opacity 1s ease;
+      transform: scale(0.95);
+      transition: opacity 1s ease, transform 1s ease;
     }
 
     .foto img {
@@ -42,14 +47,35 @@
       margin-top: 40px;
       font-size: 1.2em;
       font-weight: bold;
+    }
+
+    #iniciar {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ff7db3;
+      border: none;
+      color: white;
+      font-size: 1.3em;
+      padding: 20px 30px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: opacity 1s ease, transform 0.4s ease;
+      z-index: 10;
+    }
+
+    #iniciar.fade-out {
       opacity: 0;
-      transition: opacity 1s ease;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
 
-  <h1>🎉 ¡Feliz cumpleaños!</h1>
+  <button id="iniciar">¡Toca para comenzar!</button>
+
+  <h1 id="titulo">🎉 ¡Feliz cumpleaños!</h1>
 
   <div class="foto" id="foto1">
     <img src="WhatsApp Image 2025-07-08 at 20.19.49.jpeg" alt="Foto 1">
@@ -81,29 +107,46 @@
   <audio id="datasets" src="datasets/One%20Day%20lyrics%20by%20Alex%20blue%20_%20Love%20Music.mp3"></audio>
 
   <script>
-    window.onload = () => {
-      const audio = document.getElementById('datasets');
+    const boton = document.getElementById('iniciar');
+    const audio = document.getElementById('datasets');
+    const titulo = document.getElementById('titulo');
+    const fotos = [
+      document.getElementById('foto1'),
+      document.getElementById('foto2'),
+      document.getElementById('foto3'),
+      document.getElementById('foto4')
+    ];
+    const mensajeFinal = document.getElementById('mensajeFinal');
+
+    boton.addEventListener('click', () => {
+      // Oculta el botón con fade-out
+      boton.classList.add('fade-out');
+
+      // Reproduce el audio
       audio.play().catch(e => {
-        console.log('No se pudo reproducir el audio automáticamente:', e);
+        console.log('Error al reproducir audio:', e);
       });
 
-      const fotos = [
-        document.getElementById('foto1'),
-        document.getElementById('foto2'),
-        document.getElementById('foto3'),
-        document.getElementById('foto4')
-      ];
+      // Muestra el título con animación
+      setTimeout(() => {
+        titulo.style.opacity = '1';
+        titulo.style.transform = 'scale(1)';
+      }, 1000);
 
+      // Muestra cada foto con zoom suave
       fotos.forEach((foto, i) => {
         setTimeout(() => {
           foto.style.opacity = '1';
-        }, i * 3000);
+          foto.style.transform = 'scale(1)';
+        }, 2000 + i * 3000);
       });
 
+      // Muestra el mensaje final
       setTimeout(() => {
-        document.getElementById('mensajeFinal').style.opacity = '1';
-      }, fotos.length * 3000 + 1000);
-    };
+        mensajeFinal.style.opacity = '1';
+        mensajeFinal.style.transform = 'scale(1)';
+      }, 2000 + fotos.length * 3000 + 1000); // 2s + 12s + 1s = 15s
+    });
   </script>
 
 </body>
