@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Te queremos ❤️</title>
   <style>
-
     body {
       background-color: #fbd5ec;
       font-family: 'Segoe UI', sans-serif;
@@ -73,28 +72,38 @@
   </div>
 
   <div class="final" id="mensajeFinal">
-   Porque hay canciones que dicen más que las palabras.
-Por qué hoy no solo celebramos tu cumpleaños....
-Celebramos tenerte  🫶🏻
+    Porque hay canciones que dicen más que las palabras.<br>
+    Porque hoy no solo celebramos tu cumpleaños...<br>
+    Celebramos tenerte 🫶🏻
   </div>
 
+  <!-- Audio oculto -->
+  <audio id="datasets" src="datasets/One%20Day%20lyrics%20by%20Alex%20blue%20_%20Love%20Music.mp3"></audio>
+
   <script>
-    const fotos = [
-      document.getElementById('foto1'),
-      document.getElementById('foto2'),
-      document.getElementById('foto3'),
-      document.getElementById('foto4')
-    ];
+    window.onload = () => {
+      const audio = document.getElementById('datasets');
+      audio.play().catch(e => {
+        console.log('No se pudo reproducir el audio automáticamente:', e);
+      });
 
-    fotos.forEach((foto, i) => {
+      const fotos = [
+        document.getElementById('foto1'),
+        document.getElementById('foto2'),
+        document.getElementById('foto3'),
+        document.getElementById('foto4')
+      ];
+
+      fotos.forEach((foto, i) => {
+        setTimeout(() => {
+          foto.style.opacity = '1';
+        }, i * 3000);
+      });
+
       setTimeout(() => {
-        foto.style.opacity = '1';
-      }, i * 3000);
-    });
-
-    setTimeout(() => {
-      document.getElementById('mensajeFinal').style.opacity = '1';
-    }, fotos.length * 3000 + 1000);
+        document.getElementById('mensajeFinal').style.opacity = '1';
+      }, fotos.length * 3000 + 1000);
+    };
   </script>
 
 </body>
