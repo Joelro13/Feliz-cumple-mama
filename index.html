@@ -134,18 +134,18 @@
       }, 1000);
 
       // Muestra cada foto con zoom suave
-      fotos.forEach((foto, i) => {
-        setTimeout(() => {
-          foto.style.opacity = '1';
-          foto.style.transform = 'scale(1)';
-        }, 2000 + i * 3000);
-      });
+    fotos.forEach((foto, i) => {
+  setTimeout(() => {
+    foto.style.opacity = '1';
+    foto.style.transform = 'scale(1)';
+  }, 2000 + i * 5000); // 5 segundos entre cada foto
+});
 
-      // Muestra el mensaje final
-      setTimeout(() => {
-        mensajeFinal.style.opacity = '1';
-        mensajeFinal.style.transform = 'scale(1)';
-      }, 2000 + fotos.length * 3000 + 1000); // 2s + 12s + 1s = 15s
+setTimeout(() => {
+  mensajeFinal.style.opacity = '1';
+  mensajeFinal.style.transform = 'scale(1)';
+}, 2000 + fotos.length * 5000 + 1000); // Ajustado al nuevo ritmo
+
     });
   </script>
 
